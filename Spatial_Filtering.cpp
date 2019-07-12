@@ -95,6 +95,26 @@ int main() {
 		      255,
 		      THRESH_BINARY_INV); // INV니까 125보다 높으면 0으로 셋팅
 
+
+	Mat blur, grad_x, grad_y, abs_grad_x, abs_grad_y, result;
+	GaussianBlur(image,
+				 blur,
+		         Size(5, 5),
+		         5,
+		         5,
+		         BORDER_DEFAULT);
+
+	Sobel(blur, grad_x, CV_16S, 1, 0, 3);
+	convertScaleAbs(grad_x, abs_grad_x);
+
+	Sobel(blur, grad_y, CV_16S, 1, 0, 3);
+	convertScaleAbs(grad_y, abs_grad_y);
+
+	addWeighted(
+		abs_grad_x, 0.5,
+		abs_grad_y, 0.5,
+		0, result);
+
 	imshow("input Image", image);
 	imshow("Average image", avgImg);
 	imshow("Gaussian blurred image", gaussinImg);
@@ -107,6 +127,7 @@ int main() {
 	imshow("threshold", threshImage);
 	imshow("cannyEdge", cannyEdge);
 	imshow("invCannyEdge", invCannyEdge);
+	imshow("SobelEdge", result);
 
 	waitKey(0);
 	return 0;

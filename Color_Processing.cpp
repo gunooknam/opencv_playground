@@ -8,6 +8,7 @@
 using namespace cv;
 using namespace std;
 
+// 1. HSV color space  
 // H: Hue 색상        -> 0 ~ 180 값을 지닌다.
 //    -> 색의 질이다. 빨, 노, 파
 // S: Saturation 채도 -> 0 ~ 255 값을 지닌다.
