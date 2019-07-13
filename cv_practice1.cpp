@@ -7,6 +7,11 @@ using namespace std;
 using namespace cv;
 
 // 이미지 플립 및 블러오기
+// waitKey란...? 키를 기다리는 함수이다.
+// 리턴값으로 해당 키에 대해 눌린 값을 리턴받는다.
+// SPCAE 32,
+// ESC 27 등의 숫자를 리턴받는다.
+
 int main() {
 	Mat image = imread("hello.jpg");
 	if (image.empty()) {

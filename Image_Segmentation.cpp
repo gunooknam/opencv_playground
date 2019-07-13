@@ -12,11 +12,10 @@ using namespace std;
 //   --> Process of partitioning a digital image into multiple regions
 // Application 
 //   --> Object classification
-
 // input 이미지가 gray-scale 이라면
-// -> binary image로 
-// Thresholding의 Challaenging은 Noise이다.
-// illumination and reflextance 도 Challenging하다.
+//	 --> binary image로 
+// > Thresholding의 Challaenging은 Noise이다.
+// > illumination and reflextance 도 Challenging하다.
 
 int main() {
 	Mat image, thresh, otsu, local;
@@ -60,7 +59,6 @@ int main() {
 		      0,
 		      255,
 		      THRESH_BINARY | THRESH_OTSU);
-
 	// > ADAPTIVE THRESH_MEAN
 	// > ADAPTIVE THRESH_GAUSSIAN 선택
 

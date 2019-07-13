@@ -8,6 +8,7 @@
 using namespace cv;
 using namespace std;
 
+// 다양한 필터링의 예제
 
 Mat saltPepperNoise(Mat img, int n) {
 	int i, j;
