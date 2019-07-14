@@ -88,7 +88,10 @@ int main() {
 				String label = format("%s:%.2f", className.c_str(), confidence);
 				int baseLine = 0;
 				Size labelSize = getTextSize(label, FONT_HERSHEY_SIMPLEX, 0.5 , 1, &baseLine);
-				rectangle(frame, Rect(p1, Size(labelSize.width, labelSize.height + baseLine)), object_roi_color, FILLED);
+				rectangle(frame,
+					      Rect(p1, Size(labelSize.width, labelSize.height + baseLine)),
+					      object_roi_color,
+					      FILLED);
 				putText(frame, label, p1 + Point(0, labelSize.height), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 0, 0));
 			}
 		}

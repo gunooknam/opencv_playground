@@ -43,7 +43,9 @@ int main() {
 			avg*(cnt - 1)/cnt,
 			avg);
 
-		imshow("avg", avg);
+		imshow("avg", avg); 
+		// opencv 에서는 같은 이름의 창이 두번 불려진다면 창이 두번 켜지는게 아니라 
+		// 내용물만 update 된다. 
 		cnt++;
 		waitKey(0);
 	}

@@ -29,11 +29,9 @@ int main() {
 
 	hog.setSVMDetector(HOGDescriptor::getDaimlerPeopleDetector());
 	while (1) {
-
 		// input image
 		cap >> frame;
 		if (frame.empty()) break;
-		
 		// detect
 		hog.detectMultiScale(
 			frame,     // input ¿ÃπÃ¡ˆ
@@ -43,7 +41,6 @@ int main() {
 			Size(32, 32),
 			1.05,
 			6);
-
 		//draw results (bounding boxes)
 		for (i = 0; i < (int)found.size(); i++) 
 				rectangle(frame,
