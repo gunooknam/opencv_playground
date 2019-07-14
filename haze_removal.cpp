@@ -52,12 +52,10 @@ void GuideFilter(Mat &source, Mat &guided_image, Mat &output, int radius, double
 	makeDepth32f(guided, guided_32f);
 	mynorm(guided_32f, guided_32f);
 
-	//
 	Mat mat_Ip, mat_I2;
 	multiply(guided_32f, source_32f, mat_Ip);
 	multiply(guided_32f, guided_32f, mat_I2);
 
-	//
 	Mat mean_p, mean_I, mean_Ip, mean_I2;
 	Size win_size(2 * radius + 1, 2 * radius + 1);
 	boxFilter(source_32f, mean_p, CV_32F, win_size);
@@ -65,17 +63,14 @@ void GuideFilter(Mat &source, Mat &guided_image, Mat &output, int radius, double
 	boxFilter(mat_Ip, mean_Ip, CV_32F, win_size);
 	boxFilter(mat_I2, mean_I2, CV_32F, win_size);
 
-	//
 	Mat cov_Ip = mean_Ip - mean_I.mul(mean_p);
 	Mat var_I = mean_I2 - mean_I.mul(mean_I);
 	var_I += epsilon;
 
-	//
 	Mat a, b;
 	divide(cov_Ip, var_I, a);
 	b = mean_p - a.mul(mean_I);
 
-	//
 	Mat mean_a, mean_b;
 	boxFilter(a, mean_a, CV_32F, win_size);
 	boxFilter(b, mean_b, CV_32F, win_size);
@@ -268,7 +263,6 @@ void HazeRemoval(Mat & src,
 			double t = tdata[j];
 			t /= 255;
 			if (t < 0.1) t = 0.1;
-
 			outdata[3 * j] = saturate_cast<uchar>((b - b_max) / t + b_max + L);
 			outdata[3 * j + 1] = saturate_cast<uchar>((g - g_max) / t + g_max + L);
 			outdata[3 * j + 2] = saturate_cast<uchar>((r - r_max) / t + r_max + L);
